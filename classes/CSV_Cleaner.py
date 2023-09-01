@@ -14,4 +14,3 @@ class LineCleaner:
                 word = word[1:]
                 word = word[:-1]
                 words[index] = word
-
