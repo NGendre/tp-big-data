@@ -43,5 +43,7 @@ for line in sys.stdin:
         df = DataFrame(columns=words)
         continue
     df.loc[0] = words  # insert row in dataframe
+    if not LineCleaner.has_clean_date(df):
+        continue
     json_str = mapper.filter(df).to_json()
     print(json_str)
