@@ -3,9 +3,9 @@ from typing import List
 
 class LineCleaner:
     @staticmethod
-    def delimit(line: str) -> List[str]:
+    def delimit(line: str, delimiter: str) -> List[str]:
         line = line.strip()
-        return line.split(",")
+        return line.split(delimiter)
 
     @staticmethod
     def clean_double_quote(words: List[str]) -> None:
