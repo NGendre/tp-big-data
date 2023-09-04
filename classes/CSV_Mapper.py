@@ -1,6 +1,7 @@
 import json
 from typing import Dict, Set
 
+import numpy as np
 from pandas import DataFrame
 
 
@@ -16,7 +17,7 @@ class Mapper:
         return self
 
     def to_json(self) -> str:
-        json_ligne = json.dumps(self.__dico)
+        json_ligne = json.dumps(self.__dico,default=convert_int64_to_int)
         return json_ligne
 
     def to_raw_str(self) -> str:
@@ -25,3 +26,8 @@ class Mapper:
             valeurs.append(valeur)
         resultat = ', '.join(valeurs)
         return resultat
+
+def convert_int64_to_int(obj):
+    if isinstance(obj, np.int64):
+        return int(obj)
+    return obj
