@@ -18,9 +18,9 @@ class LineCleaner:
         return line.split(delimiter)
 
     @staticmethod
-    def clean_double_quote(words: List[str]) -> None:
+    def clean_double_quote_if_not_empty(words: List[str]) -> None:
         for (index, word) in enumerate(words):
-            if word[0] == '"' and word[-1] == '"':
+            if word[0] == '"' and word[-1] == '"' and word != "":
                 word = word[1:]
                 word = word[:-1]
                 words[index] = word
