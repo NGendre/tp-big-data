@@ -11,7 +11,6 @@ def is_valid_date(value: Any):
         return False
 
 
-
 class LineCleaner:
     @staticmethod
     def delimit(line: str, delimiter: str) -> List[str]:

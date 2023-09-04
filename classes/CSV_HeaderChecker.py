@@ -2,8 +2,6 @@ from typing import List, Set
 
 
 class HeaderChecker:
-    __is_header: bool
-    __correct_headers: Set[str]
 
     def __init__(self, set_headers: Set[str]):
         self.__is_header = True
