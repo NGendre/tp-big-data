@@ -1,4 +1,6 @@
 from typing import Any, List
+
+import pandas as pd
 from pandas import DataFrame
 from dateutil.parser import parse
 
@@ -20,7 +22,7 @@ class LineCleaner:
     @staticmethod
     def clean_double_quote_if_not_empty(words: List[str]) -> None:
         for (index, word) in enumerate(words):
-            if word[0] == '"' and word[-1] == '"' and word != "":
+            if word != "" and word[0] == '"' and word[-1] == '"':
                 word = word[1:]
                 word = word[:-1]
                 words[index] = word
@@ -29,3 +31,13 @@ class LineCleaner:
     def has_clean_date(dataframe: DataFrame) -> bool:
         valid_date = dataframe['datcde'].apply(is_valid_date)
         return valid_date.bool()
+
+    @staticmethod
+    def is_between_years(dataframe: DataFrame,startYear:int,endYear:int) -> bool:
+        date = int(pd.to_datetime(dataframe['datcde']).dt.year)
+        if date>=startYear and date<=endYear:
+            return True
+        return False
+
+
+
